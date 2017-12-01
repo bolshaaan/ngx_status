@@ -12,6 +12,7 @@ import (
 )
 
 var hostParam = flag.String("hostname", "", "by default hostname of server")
+var verbose = flag.Bool("v", false, "some info")
 
 func main() {
 
@@ -23,6 +24,10 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
+	}
+
+	if *verbose {
+		log.Println("hostParam = ", *hostParam)
 	}
 
 	resp, err := http.Get(fmt.Sprintf("http://%s/status/format/json", *hostParam))
