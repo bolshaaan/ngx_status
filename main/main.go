@@ -7,7 +7,7 @@ import (
 	"flag"
 	"os"
 
-	"github.com/bolshaaan/nginx_status"
+	"github.com/bolshaaan/ngx_status"
 )
 
 var hostParam = flag.String("hostname", "", "by default hostname of server")
@@ -29,5 +29,5 @@ func main() {
 		panic(err)
 	}
 
-	nginx_status.PrintStatus(resp.Body)
+	ngx_status.PrintStatus(resp.Body)
 }

@@ -1,4 +1,4 @@
-package nginx_status
+package ngx_status
 
 import (
 	"encoding/json"
