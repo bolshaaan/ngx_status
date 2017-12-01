@@ -1,4 +1,4 @@
-package ngx_status
+package ngx_stat
 
 
 

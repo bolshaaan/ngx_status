@@ -1,10 +1,11 @@
-package ngx_status
+package ngx_stat
 
 import (
 	"encoding/json"
 	"fmt"
 	"io"
 	"strings"
+	"log"
 )
 
 func processParams(p map[string]interface{}, parent string) []string {
@@ -50,7 +51,7 @@ func PrintStatus(f io.Reader) {
 	dec.UseNumber()
 
 	if err := dec.Decode(&d); err != nil {
-		panic(err)
+		log.Fatalf("Error while decoding: %v", err)
 	}
 
 	for k, v := range d["serverZones"].(map[string]interface{}) {

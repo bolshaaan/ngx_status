@@ -7,7 +7,8 @@ import (
 	"flag"
 	"os"
 
-	"github.com/bolshaaan/ngx_status"
+	"github.com/bolshaaan/ngx_status/ngx_stat"
+	"log"
 )
 
 var hostParam = flag.String("hostname", "", "by default hostname of server")
@@ -26,8 +27,8 @@ func main() {
 
 	resp, err := http.Get(fmt.Sprintf("http://%s/status/format/json", *hostParam))
 	if err != nil {
-		panic(err)
+		log.Fatalf("Error: %v", err)
 	}
 
-	ngx_status.PrintStatus(resp.Body)
+	ngx_stat.PrintStatus(resp.Body)
 }
