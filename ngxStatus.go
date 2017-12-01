@@ -67,9 +67,13 @@ func PrintStatus(f io.Reader) {
 	for zname, v := range d["upstreamZones"].(map[string]interface{}) {
 		for _, zone := range v.([]interface{}) {
 			zn := zone.(map[string]interface{})
+
+			server := zn["server"]
+			delete(zn, "server")
+
 			metricsList := processParams(zn, "")
 
-			fmt.Printf("nginx_vts_upstream,zone=%s,server=%s %s\n", zname, zn["server"], strings.Join(metricsList, ","))
+			fmt.Printf("nginx_vts_upstream,zone=%s,server=%s %s\n", zname, server, strings.Join(metricsList, ","))
 		}
 	}
 
